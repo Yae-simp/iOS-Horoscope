@@ -7,13 +7,14 @@
 
 import UIKit
 
+// Defines a view controller (MainViewController) that displays a list of horoscopes in a table view.
 class MainViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
     let horoscopeList: [Horoscope] = Horoscope.getAll()
     // Defines a constant `horoscopeList` which holds an array of Horoscope objects
-    // The Horoscope.getAll() method returns a list of horoscope data (names, dates, icons)
+    // Horoscope.getAll() method returns a list of horoscope data (names, dates, icons)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,5 +40,13 @@ class MainViewController: UIViewController, UITableViewDataSource {
         cell.render(from: horoscope)
         return cell
     }
-
 }
+/*
+iOS (Swift)                 Android (Kotlin)
+UITableView                 RecyclerView
+UITableViewDataSource       RecyclerView.Adapter
+dequeueReusableCell()       ViewHolder (recycling)
+cellForRowAt                onCreateViewHolder()
+numberOfRowsInSection       getItemCount()
+render(from:)               onBindViewHolder()
+*/
