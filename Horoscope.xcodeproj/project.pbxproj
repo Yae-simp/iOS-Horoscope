@@ -30,20 +30,47 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B28DA8812D0B555A003F0243 /* Exceptions for "Horoscope" folder in "Horoscope" target */ = {
+		B21F64592D11FFC7004D0628 /* Exceptions for "Horoscope" folder in "Horoscope" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				"/Localized: Assets and screen/LaunchScreen.storyboard",
+				"/Localized: Assets and screen/Main.storyboard",
+				"Assets and screen/Assets.xcassets",
+				Data/Horoscope.swift,
+				Huh/AppDelegate.swift,
+				Huh/SceneDelegate.swift,
+				Utils/SessionManager.swift,
+				ViewCell/HoroscopeViewCell.swift,
+				ViewController/DetailViewController.swift,
+				ViewController/MainViewController.swift,
 			);
 			target = B28DA8582D0B5559003F0243 /* Horoscope */;
+		};
+		B21F645A2D11FFC7004D0628 /* Exceptions for "Horoscope" folder in "HoroscopeTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Assets and screen/LaunchScreen.storyboard",
+				"/Localized: Assets and screen/Main.storyboard",
+				"Assets and screen/Assets.xcassets",
+				Data/Horoscope.swift,
+				Huh/AppDelegate.swift,
+				Huh/Info.plist,
+				Huh/SceneDelegate.swift,
+				Utils/SessionManager.swift,
+				ViewCell/HoroscopeViewCell.swift,
+				ViewController/DetailViewController.swift,
+				ViewController/MainViewController.swift,
+			);
+			target = B28DA86E2D0B555A003F0243 /* HoroscopeTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B28DA85B2D0B5559003F0243 /* Horoscope */ = {
+		B21F644E2D11FFC7004D0628 /* Horoscope */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B28DA8812D0B555A003F0243 /* Exceptions for "Horoscope" folder in "Horoscope" target */,
+				B21F64592D11FFC7004D0628 /* Exceptions for "Horoscope" folder in "Horoscope" target */,
+				B21F645A2D11FFC7004D0628 /* Exceptions for "Horoscope" folder in "HoroscopeTests" target */,
 			);
 			path = Horoscope;
 			sourceTree = "<group>";
@@ -88,7 +115,7 @@
 		B28DA8502D0B5559003F0243 = {
 			isa = PBXGroup;
 			children = (
-				B28DA85B2D0B5559003F0243 /* Horoscope */,
+				B21F644E2D11FFC7004D0628 /* Horoscope */,
 				B28DA8722D0B555A003F0243 /* HoroscopeTests */,
 				B28DA87C2D0B555A003F0243 /* HoroscopeUITests */,
 				B28DA85A2D0B5559003F0243 /* Products */,
@@ -120,9 +147,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				B28DA85B2D0B5559003F0243 /* Horoscope */,
-			);
 			name = Horoscope;
 			packageProductDependencies = (
 			);
@@ -144,6 +168,7 @@
 				B28DA8712D0B555A003F0243 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				B21F644E2D11FFC7004D0628 /* Horoscope */,
 				B28DA8722D0B555A003F0243 /* HoroscopeTests */,
 			);
 			name = HoroscopeTests;
