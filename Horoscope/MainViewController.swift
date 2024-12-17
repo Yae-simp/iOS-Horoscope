@@ -7,14 +7,11 @@
 
 import UIKit
 
-// Defines a view controller (MainViewController) that displays a list of horoscopes in a table view.
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let horoscopeList: [Horoscope] = Horoscope.getAll()
-    // Defines a constant `horoscopeList` which holds an array of Horoscope objects
-    // Horoscope.getAll() method returns a list of horoscope data (names, dates, icons)
+    var horoscopeList: [Horoscope] = Horoscope.getAll()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +20,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         tableView.dataSource = self
-        print("Horoscope List: \(horoscopeList)")
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        self.navigationItem.searchController = searchController
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +38,22 @@ class MainViewController: UIViewController, UITableViewDataSource {
         let horoscope = horoscopeList[indexPath.row]
         cell.render(from: horoscope)
         return cell
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.isEmpty) {
+            horoscopeList = Horoscope.getAll()
+        } else {
+            horoscopeList = Horoscope.getAll().filter({ horoscope in
+                horoscope.name.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        horoscopeList = Horoscope.getAll()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
