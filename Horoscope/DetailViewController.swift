@@ -9,20 +9,46 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var horoscope: Horoscope!
+    var isFavorite: Bool = false
+    var session: SessionManager!
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var dailyTextView: UITextView!
+    @IBOutlet weak var favoriteMenu: UIBarButtonItem!
     
     var dailyResult: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        session = SessionManager()
+        
         navigationItem.title = horoscope.name
         datesLabel.text = horoscope.dates
         iconImageView.image = horoscope.icon
         getDaily(id: horoscope.id)
+        
+        isFavorite = session.isFavorite(horoscopeId: horoscope.id)
+        setFavoriteIcon()
+    }
+    
+    func setFavoriteIcon() {
+        if (isFavorite) {
+            favoriteMenu.image = UIImage(systemName: "heart.fill")
+        } else {
+            favoriteMenu.image = UIImage(systemName: "heart")
+        }
+    }
+
+    @IBAction func setFavorite(_ sender: Any) {
+        if (isFavorite) {
+            session.setFavorite(horoscopeId: "")
+        } else {
+            session.setFavorite(horoscopeId: horoscope.id)
+        }
+        isFavorite = !isFavorite
+        setFavoriteIcon()
     }
     
     func getDaily(id: String) {
